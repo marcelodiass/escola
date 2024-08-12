@@ -10,3 +10,18 @@ class Estudante(models.Model):
     
     def __str__(self):
         return self.nome
+    
+
+class Curso(models.Model):
+    NIVEL = (
+        ('B', 'Básico'),
+        ('I', 'Intermediário'),
+        ('A', 'Avançado'),
+    )
+    
+    codigo = models.CharField(max_length=10)
+    descricao = models.CharField(max_length=100, blank=False)
+    nivel = models.CharField(max_length=1, blank=False, null=False, choices=NIVEL, default='B')
+    
+    def __str__(self):
+        return self.codigo
